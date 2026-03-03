@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Scrapertunities</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav-bar">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-mark">S</span>crapertunities
+      </a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link active">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-content">
+      <h1>About <span class="text-accent">Scrapertunities</span></h1>
+
+      <p>
+        Scrapertunities is a free, automated platform that aggregates internship and scholarship
+        listings from across the web. We built it because finding opportunities shouldn't require
+        checking dozens of websites every week — so we do the checking for you.
+      </p>
+
+      <p>
+        Our scraper pulls fresh listings daily, filters out expired postings, and surfaces everything
+        in one clean, searchable interface. Whether you're hunting for a summer internship or a
+        scholarship to fund your next semester, Scrapertunities has you covered.
+      </p>
+
+      <h2>How It Works</h2>
+
+      <p>
+        Behind the scenes, a Python scraper built with <strong>BeautifulSoup</strong> and
+        <strong>Requests</strong> periodically fetches opportunity listings from curated sources —
+        including popular GitHub repositories that track internship openings. The data is cleaned,
+        normalized, and loaded into the front-end you're reading right now.
+      </p>
+
+      <p>
+        The front-end is intentionally lightweight: plain HTML, CSS, and a small JavaScript file.
+        No frameworks, no build step — just fast, accessible pages that work everywhere.
+      </p>
+
+      <h2>The Team</h2>
+
+      <p>Scrapertunities was built by the MICS Team.</p>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">Y</div>
+          <p class="team-name">Yannis</p>
+          <p class="team-role">Full-Stack</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">N</div>
+          <p class="team-name">Nifemi</p>
+          <p class="team-role">Scraper & Backend</p>
+        </div>
+      </div>
+
+      <h2>Open Source</h2>
+
+      <p>
+        Scrapertunities is open source. Contributions, bug reports, and feature requests are
+        welcome — check out the repository and get involved.
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Scrapertunities. Built by MICS Team.</p>
+    <a href="#" class="back-to-top">↑ Top</a>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
