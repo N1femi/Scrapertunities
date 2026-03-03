@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scrapertunities</title>
+  <style>
+    :root {
+      --bg: #f4efe6;
+      --surface: #fffaf2;
+      --text: #1f2933;
+      --muted: #52606d;
+      --accent: #c2410c;
+      --accent-dark: #9a3412;
+      --border: #e5d7c3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top right, rgba(194, 65, 12, 0.12), transparent 35%),
+        linear-gradient(135deg, #f7f2ea, #efe4d2);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .hero {
+      width: min(100%, 960px);
+      background: rgba(255, 250, 242, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow: 0 20px 50px rgba(31, 41, 51, 0.1);
+      display: grid;
+      gap: 24px;
+    }
+
+    .eyebrow {
+      font-size: 0.9rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 4.8rem);
+      line-height: 0.95;
+      max-width: 9ch;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 58ch;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(194, 65, 12, 0.2);
+    }
+
+    .button.secondary {
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .stat {
+      padding: 20px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        padding: 32px 24px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="hero">
+    <div class="eyebrow">Smart outreach, less noise</div>
+    <h1>Find better leads faster.</h1>
+    <p>
+      Scrapertunities helps you spot real opportunities, organize promising targets, and move
+      from scattered research to clear next steps without wasting hours on manual digging.
+    </p>
+    <div class="actions">
+      <a class="button primary" href="#">Get Started</a>
+      <a class="button secondary" href="#">See How It Works</a>
+    </div>
+    <section class="stats" aria-label="Highlights">
+      <div class="stat">
+        <strong>3x</strong>
+        <span>Faster research cycles for small teams</span>
+      </div>
+      <div class="stat">
+        <strong>24/7</strong>
+        <span>Always-on discovery for new opportunities</span>
+      </div>
+      <div class="stat">
+        <strong>1 View</strong>
+        <span>All your high-value leads in one place</span>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
