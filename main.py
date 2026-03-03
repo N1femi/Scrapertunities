@@ -26,8 +26,6 @@ if response.status_code == 200:
                 essential_info = ["Unknown Company", values[1], link_tag]
                 
             print(f"\n {essential_info}")
-        
-    print(count)
 
             
     
