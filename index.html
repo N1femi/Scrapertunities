@@ -1,361 +1,252 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scrapertunities — Find Internships & Scholarships</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scrapertunities — Find Internships & Scholarships</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+      <nav class="nav-bar">
+        <a href="index.html" class="nav-logo">
+          <span class="logo-mark">S</span>crapertunities
+        </a>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <!-- ===== HEADER ===== -->
-  <header class="site-header">
-    <nav class="nav-bar">
-      <a href="index.html" class="nav-logo">
-        <span class="logo-mark">S</span>crapertunities
-      </a>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links">
-        <li><a href="index.html" class="nav-link active">Home</a></li>
-        <li><a href="about.html" class="nav-link">About</a></li>
-        <li><a href="contact.html" class="nav-link">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-
-    <!-- ===== HERO ===== -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          Find Your Next <span class="text-accent">Opportunity</span>
-        </h1>
-        <p class="hero-subtitle">
-          Scrapertunities automatically pulls the latest internship and scholarship
-          listings so you never miss a deadline.
-        </p>
-        <a href="#listings" class="btn btn-primary btn-lg">Browse Opportunities</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-number" id="stat-total">0</span>
-          <span class="stat-label">Total</span>
+    <main>
+      <!-- ===== HERO ===== -->
+      <section class="hero">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Find Your Next <span class="text-accent">Opportunity</span>
+          </h1>
+          <p class="hero-subtitle">
+            Scrapertunities automatically pulls the latest internship and
+            scholarship listings so you never miss a deadline.
+          </p>
+          <a href="#listings" class="btn btn-primary btn-lg"
+            >Browse Opportunities</a
+          >
         </div>
-        <div class="stat">
-          <span class="stat-number" id="stat-internships">0</span>
-          <span class="stat-label">Internships</span>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number" id="stat-total">0</span>
+            <span class="stat-label">Total</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" id="stat-internships">0</span>
+            <span class="stat-label">Internships</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" id="stat-scholarships">0</span>
+            <span class="stat-label">Scholarships</span>
+          </div>
         </div>
-        <div class="stat">
-          <span class="stat-number" id="stat-scholarships">0</span>
-          <span class="stat-label">Scholarships</span>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ===== CONTROLS ===== -->
-    <section class="controls" aria-label="Search and filter opportunities">
-      <div class="search-bar">
-        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"/>
+      <!-- ===== CONTROLS ===== -->
+      <section class="controls" aria-label="Search and filter opportunities">
+        <div class="search-bar">
+          <svg
+            class="search-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <input
+            type="search"
+            id="search-input"
+            class="search-input"
+            placeholder="Search by role, company, skill..."
+            aria-label="Search opportunities"
+            autocomplete="off"
+          />
+          <button
+            class="search-clear"
+            id="search-clear"
+            aria-label="Clear search"
+            hidden
+          >
+            ×
+          </button>
+        </div>
+
+        <div class="filter-row">
+          <div class="filter-group">
+            <label class="filter-label" for="filter-type">Type</label>
+            <select id="filter-type" class="filter-select">
+              <option value="all">All Types</option>
+              <option value="internship">Internship</option>
+              <option value="scholarship">Scholarship</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label" for="filter-location">Location</label>
+            <select id="filter-location" class="filter-select">
+              <option value="all">All Locations</option>
+              <option value="remote">Remote</option>
+              <option value="onsite">On-site</option>
+              <option value="hybrid">Hybrid</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label" for="filter-deadline">Deadline</label>
+            <select id="filter-deadline" class="filter-select">
+              <option value="all">Any Date</option>
+              <option value="7">Next 7 days</option>
+              <option value="30">Next 30 days</option>
+              <option value="90">Next 3 months</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label" for="sort-by">Sort By</label>
+            <select id="sort-by" class="filter-select">
+              <option value="deadline-asc">Deadline (Soonest)</option>
+              <option value="deadline-desc">Deadline (Latest)</option>
+              <option value="added-desc">Recently Added</option>
+              <option value="alpha-asc">A → Z</option>
+            </select>
+          </div>
+
+          <button class="btn btn-ghost" id="filter-reset">Reset Filters</button>
+        </div>
+
+        <div class="results-meta">
+          <p class="results-count">
+            Showing <strong id="results-count">0</strong> results
+          </p>
+          <div class="active-filters" id="active-filters"></div>
+        </div>
+      </section>
+
+      <!-- ===== LISTINGS ===== -->
+      <section id="listings" class="listings" aria-label="Opportunity listings">
+        <p class="listings-loading">Loading opportunities…</p>
+      </section>
+
+      <!-- ===== EMPTY STATE ===== -->
+      <section class="empty-state" id="empty-state" aria-live="polite" hidden>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 64 64"
+          fill="none"
+          aria-hidden="true"
+        >
+          <circle
+            cx="32"
+            cy="32"
+            r="30"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+          <path
+            d="M22 30h20M22 38h12"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <circle cx="32" cy="22" r="2" fill="currentColor" />
         </svg>
-        <input
-          type="search"
-          id="search-input"
-          class="search-input"
-          placeholder="Search by role, company, skill..."
-          aria-label="Search opportunities"
-          autocomplete="off"
-        />
-        <button class="search-clear" id="search-clear" aria-label="Clear search" hidden>×</button>
-      </div>
+        <h3>No results found</h3>
+        <p>Try adjusting your filters or search term.</p>
+        <button class="btn btn-primary" id="empty-reset">Reset Filters</button>
+      </section>
 
-      <div class="filter-row">
-        <div class="filter-group">
-          <label class="filter-label" for="filter-type">Type</label>
-          <select id="filter-type" class="filter-select">
-            <option value="all">All Types</option>
-            <option value="internship">Internship</option>
-            <option value="scholarship">Scholarship</option>
-          </select>
-        </div>
+      <!-- ===== RESOURCES ===== -->
+      <section class="resources">
+        <h2>Helpful Resources</h2>
+        <ul class="resource-list">
+          <li>
+            <a href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"
+                />
+                <path
+                  d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"
+                />
+              </svg>
+              How to Write a Strong Internship Application
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"
+                />
+                <path
+                  d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"
+                />
+              </svg>
+              Scholarship Essay Tips & Common Mistakes
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"
+                />
+                <path
+                  d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"
+                />
+              </svg>
+              Resume Builder for Students
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
 
-        <div class="filter-group">
-          <label class="filter-label" for="filter-location">Location</label>
-          <select id="filter-location" class="filter-select">
-            <option value="all">All Locations</option>
-            <option value="remote">Remote</option>
-            <option value="onsite">On-site</option>
-            <option value="hybrid">Hybrid</option>
-          </select>
-        </div>
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+      <p>&copy; 2026 Scrapertunities. Built by MICS Team.</p>
+      <a href="#" class="back-to-top" aria-label="Back to top">↑ Top</a>
+    </footer>
 
-        <div class="filter-group">
-          <label class="filter-label" for="filter-deadline">Deadline</label>
-          <select id="filter-deadline" class="filter-select">
-            <option value="all">Any Date</option>
-            <option value="7">Next 7 days</option>
-            <option value="30">Next 30 days</option>
-            <option value="90">Next 3 months</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label class="filter-label" for="sort-by">Sort By</label>
-          <select id="sort-by" class="filter-select">
-            <option value="deadline-asc">Deadline (Soonest)</option>
-            <option value="deadline-desc">Deadline (Latest)</option>
-            <option value="added-desc">Recently Added</option>
-            <option value="alpha-asc">A → Z</option>
-          </select>
-        </div>
-
-        <button class="btn btn-ghost" id="filter-reset">Reset Filters</button>
-      </div>
-
-      <div class="results-meta">
-        <p class="results-count">
-          Showing <strong id="results-count">0</strong> results
-        </p>
-        <div class="active-filters" id="active-filters"></div>
-      </div>
-    </section>
-
-    <!-- ===== LISTINGS ===== -->
-    <section id="listings" class="listings" aria-label="Opportunity listings">
-
-      <!-- INTERNSHIP 1 -->
-      <article class="card"
-        data-type="internship"
-        data-location="remote"
-        data-deadline="2026-03-10"
-        data-added="2026-03-01"
-        data-title="software engineering intern stripe"
-      >
-        <div class="card-header">
-          <span class="badge badge-internship">Internship</span>
-          <span class="card-deadline">Due Mar 10</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Software Engineering Intern</h3>
-          <p class="card-org">Stripe · Remote</p>
-          <p class="card-description">
-            Work on distributed payment infrastructure alongside senior engineers.
-            Open to undergrad and graduate students with Python or Go experience.
-          </p>
-        </div>
-        <div class="card-footer">
-          <div class="card-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Go</span>
-            <span class="tag">Distributed Systems</span>
-          </div>
-          <a href="#" class="btn btn-primary btn-sm">Apply Now</a>
-        </div>
-      </article>
-
-      <!-- SCHOLARSHIP 1 -->
-      <article class="card"
-        data-type="scholarship"
-        data-location="remote"
-        data-deadline="2026-03-15"
-        data-added="2026-02-20"
-        data-title="gates scholarship minority undergraduate"
-      >
-        <div class="card-header">
-          <span class="badge badge-scholarship">Scholarship</span>
-          <span class="card-deadline">Due Mar 15</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Gates Millennium Scholarship</h3>
-          <p class="card-org">Bill &amp; Melinda Gates Foundation · Remote</p>
-          <p class="card-description">
-            Full-ride scholarship for minority undergraduates with strong leadership
-            and academic achievement. Covers tuition, room, and board.
-          </p>
-        </div>
-        <div class="card-footer">
-          <div class="card-tags">
-            <span class="tag">Undergraduate</span>
-            <span class="tag">Full Ride</span>
-            <span class="tag">STEM</span>
-          </div>
-          <a href="#" class="btn btn-primary btn-sm">Apply Now</a>
-        </div>
-      </article>
-
-      <!-- INTERNSHIP 2 -->
-      <article class="card"
-        data-type="internship"
-        data-location="onsite"
-        data-deadline="2026-03-22"
-        data-added="2026-02-28"
-        data-title="data science intern meta facebook"
-      >
-        <div class="card-header">
-          <span class="badge badge-internship">Internship</span>
-          <span class="card-deadline">Due Mar 22</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Data Science Intern</h3>
-          <p class="card-org">Meta · Menlo Park, CA</p>
-          <p class="card-description">
-            Join the Core Data Science team building ranking and recommendation
-            systems. Strong stats background and SQL fluency required.
-          </p>
-        </div>
-        <div class="card-footer">
-          <div class="card-tags">
-            <span class="tag">Python</span>
-            <span class="tag">SQL</span>
-            <span class="tag">Machine Learning</span>
-          </div>
-          <a href="#" class="btn btn-primary btn-sm">Apply Now</a>
-        </div>
-      </article>
-
-      <!-- INTERNSHIP 3 -->
-      <article class="card"
-        data-type="internship"
-        data-location="hybrid"
-        data-deadline="2026-04-05"
-        data-added="2026-03-01"
-        data-title="frontend engineering intern shopify"
-      >
-        <div class="card-header">
-          <span class="badge badge-internship">Internship</span>
-          <span class="card-deadline">Due Apr 5</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Front-End Engineering Intern</h3>
-          <p class="card-org">Shopify · Hybrid</p>
-          <p class="card-description">
-            Build merchant-facing UI components in React. Contribute to a design
-            system used by millions of store owners worldwide.
-          </p>
-        </div>
-        <div class="card-footer">
-          <div class="card-tags">
-            <span class="tag">React</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">CSS</span>
-          </div>
-          <a href="#" class="btn btn-primary btn-sm">Apply Now</a>
-        </div>
-      </article>
-
-      <!-- SCHOLARSHIP 2 -->
-      <article class="card"
-        data-type="scholarship"
-        data-location="remote"
-        data-deadline="2026-04-15"
-        data-added="2026-02-25"
-        data-title="national science foundation fellowship graduate research"
-      >
-        <div class="card-header">
-          <span class="badge badge-scholarship">Scholarship</span>
-          <span class="card-deadline">Due Apr 15</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">NSF Graduate Research Fellowship</h3>
-          <p class="card-org">National Science Foundation · Remote</p>
-          <p class="card-description">
-            Three-year fellowship providing a $37,000 annual stipend and $16,000
-            cost-of-education allowance for STEM graduate research.
-          </p>
-        </div>
-        <div class="card-footer">
-          <div class="card-tags">
-            <span class="tag">Graduate</span>
-            <span class="tag">Research</span>
-            <span class="tag">STEM</span>
-          </div>
-          <a href="#" class="btn btn-primary btn-sm">Apply Now</a>
-        </div>
-      </article>
-
-      <!-- INTERNSHIP 4 -->
-      <article class="card"
-        data-type="internship"
-        data-location="remote"
-        data-deadline="2026-05-01"
-        data-added="2026-03-02"
-        data-title="machine learning intern openai"
-      >
-        <div class="card-header">
-          <span class="badge badge-internship">Internship</span>
-          <span class="card-deadline">Due May 1</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Machine Learning Intern</h3>
-          <p class="card-org">OpenAI · Remote</p>
-          <p class="card-description">
-            Research and implement novel training techniques for large language
-            models. PhD students and strong MS candidates preferred.
-          </p>
-        </div>
-        <div class="card-footer">
-          <div class="card-tags">
-            <span class="tag">PyTorch</span>
-            <span class="tag">LLMs</span>
-            <span class="tag">Research</span>
-          </div>
-          <a href="#" class="btn btn-primary btn-sm">Apply Now</a>
-        </div>
-      </article>
-
-    </section>
-
-    <!-- ===== EMPTY STATE ===== -->
-    <section class="empty-state" id="empty-state" aria-live="polite" hidden>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-        <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="2"/>
-        <path d="M22 30h20M22 38h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="32" cy="22" r="2" fill="currentColor"/>
-      </svg>
-      <h3>No results found</h3>
-      <p>Try adjusting your filters or search term.</p>
-      <button class="btn btn-primary" id="empty-reset">Reset Filters</button>
-    </section>
-
-    <!-- ===== RESOURCES ===== -->
-    <section class="resources">
-      <h2>Helpful Resources</h2>
-      <ul class="resource-list">
-        <li>
-          <a href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"/><path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"/></svg>
-            How to Write a Strong Internship Application
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"/><path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"/></svg>
-            Scholarship Essay Tips & Common Mistakes
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"/><path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"/></svg>
-            Resume Builder for Students
-          </a>
-        </li>
-      </ul>
-    </section>
-
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="site-footer">
-    <p>&copy; 2026 Scrapertunities. Built by MICS Team.</p>
-    <a href="#" class="back-to-top" aria-label="Back to top">↑ Top</a>
-  </footer>
-
-  <script src="app.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>
