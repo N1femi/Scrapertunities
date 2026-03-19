@@ -25,8 +25,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.querySelector(".nav-toggle")
   const navLinks = document.querySelector(".nav-links")
 
+  const paginationContainer = document.getElementById("pagination")
+  const paginationPrev = document.getElementById("pagination-prev")
+  const paginationNext = document.getElementById("pagination-next")
+  const paginationNumbers = document.getElementById("pagination-numbers")
+  const paginationInfo = document.getElementById("pagination-info")
+
   // All cards — updated once listings are loaded
   let cards = []
+  const ITEMS_PER_PAGE = 12
+  let currentPage = 1
 
   const URGENT_DAYS = 14
 
@@ -131,6 +139,120 @@ document.addEventListener("DOMContentLoaded", () => {
     resultsCount.textContent = visible
   }
 
+  // ── Pagination ──────────────────────────────────────────────
+  function updatePagination() {
+    // Get cards that passed the filter (hidden = false)
+    const visibleCards = cards.filter((c) => !c.hidden)
+    const totalPages = Math.ceil(visibleCards.length / ITEMS_PER_PAGE) || 1
+
+    // Determine which cards should be shown on current page
+    const start = (currentPage - 1) * ITEMS_PER_PAGE
+    const end = start + ITEMS_PER_PAGE
+    const cardsToShowOnPage = new Set(visibleCards.slice(start, end))
+
+    // Apply pagination: hide/show based on whether card is on current page
+    cards.forEach((card) => {
+      // If already hidden by filter, keep it hidden
+      if (card.hidden) return
+      // Otherwise, show if on current page, hide if not
+      card.style.display = cardsToShowOnPage.has(card) ? "" : "none"
+    })
+
+    // Update pagination controls
+    paginationContainer.hidden = totalPages <= 1
+    paginationPrev.disabled = currentPage === 1
+    paginationNext.disabled = currentPage === totalPages
+
+    // Update page numbers (show only 3 at a time)
+    paginationNumbers.innerHTML = ""
+    const maxButtons = 3
+    let startPage = Math.max(1, currentPage - Math.floor(maxButtons / 2))
+    let endPage = startPage + maxButtons - 1
+
+    // Adjust if we're near the end
+    if (endPage > totalPages) {
+      endPage = totalPages
+      startPage = Math.max(1, endPage - maxButtons + 1)
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      const btn = document.createElement("button")
+      btn.className = `pagination-btn ${i === currentPage ? "active" : ""}`
+      btn.textContent = i
+
+      // If this is the current page, make it clickable to edit
+      if (i === currentPage) {
+        btn.addEventListener("click", () => {
+          // Replace button with input field
+          const input = document.createElement("input")
+          input.type = "text"
+          input.className = "pagination-input"
+          input.value = currentPage
+          input.style.width = "40px"
+          input.style.height = "40px"
+          input.style.textAlign = "center"
+
+          btn.replaceWith(input)
+          input.focus()
+          input.select()
+
+          const handleSubmit = () => {
+            const pageNum = parseInt(input.value, 10)
+            // Validate input
+            if (!isNaN(pageNum) && pageNum >= 1 && pageNum <= totalPages) {
+              currentPage = pageNum
+              updatePagination()
+              window.scrollTo({
+                top: listings.offsetTop - 100,
+                behavior: "smooth",
+              })
+            } else {
+              // Invalid input, restore button
+              input.replaceWith(btn)
+            }
+          }
+
+          input.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+              handleSubmit()
+            }
+          })
+
+          input.addEventListener("blur", () => {
+            // Restore button on blur if input still exists
+            if (input.parentNode) {
+              input.replaceWith(btn)
+            }
+          })
+        })
+      } else {
+        btn.addEventListener("click", () => {
+          currentPage = i
+          updatePagination()
+          window.scrollTo({ top: listings.offsetTop - 100, behavior: "smooth" })
+        })
+      }
+
+      paginationNumbers.appendChild(btn)
+    }
+
+    // Update info text
+    if (visibleCards.length > 0) {
+      const displayStart = (currentPage - 1) * ITEMS_PER_PAGE + 1
+      const displayEnd = Math.min(
+        currentPage * ITEMS_PER_PAGE,
+        visibleCards.length,
+      )
+      paginationInfo.textContent = `${displayStart}–${displayEnd} of ${visibleCards.length}`
+    }
+  }
+
+  // ── Results count ────────────────────────────────────────────
+  function updateResultsCount() {
+    const visible = cards.filter((c) => !c.hidden).length
+    resultsCount.textContent = visible
+  }
+
   // ── Empty state ──────────────────────────────────────────────
   function updateEmptyState() {
     const visible = cards.filter((c) => !c.hidden).length
@@ -205,7 +327,10 @@ document.addEventListener("DOMContentLoaded", () => {
       card.hidden = !(matchSearch && matchType && matchLoc && matchDeadline)
     })
 
+    // Reset to page 1 when filters change
+    currentPage = 1
     applySort()
+    updatePagination()
     updateResultsCount()
     updateEmptyState()
     updateStats()
@@ -222,13 +347,6 @@ document.addEventListener("DOMContentLoaded", () => {
           return new Date(a.dataset.deadline) - new Date(b.dataset.deadline)
         case "deadline-desc":
           return new Date(b.dataset.deadline) - new Date(a.dataset.deadline)
-        case "added-desc":
-          return new Date(b.dataset.added) - new Date(a.dataset.added)
-        case "alpha-asc": {
-          const ta = (a.dataset.title || "").toLowerCase()
-          const tb = (b.dataset.title || "").toLowerCase()
-          return ta < tb ? -1 : ta > tb ? 1 : 0
-        }
         default:
           return 0
       }
@@ -269,6 +387,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   resetBtn.addEventListener("click", resetFilters)
   emptyResetBtn.addEventListener("click", resetFilters)
+
+  // ── Pagination event listeners ─────────────────────────────────
+  paginationPrev.addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--
+      updatePagination()
+      window.scrollTo({ top: listings.offsetTop - 100, behavior: "smooth" })
+    }
+  })
+
+  paginationNext.addEventListener("click", () => {
+    const visibleCards = cards.filter((c) => !c.hidden)
+    const totalPages = Math.ceil(visibleCards.length / ITEMS_PER_PAGE)
+    if (currentPage < totalPages) {
+      currentPage++
+      updatePagination()
+      window.scrollTo({ top: listings.offsetTop - 100, behavior: "smooth" })
+    }
+  })
 
   // ── Mobile nav toggle ─────────────────────────────────────────
   if (navToggle && navLinks) {

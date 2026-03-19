@@ -17,7 +17,7 @@
     <header class="site-header">
       <nav class="nav-bar">
         <a href="index.html" class="nav-logo">
-          <span class="logo-mark">S</span>crapertunities
+          <span class="logo-mark">Scraper</span>tunities
         </a>
         <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -130,8 +130,6 @@
             <select id="sort-by" class="filter-select">
               <option value="deadline-asc">Deadline (Soonest)</option>
               <option value="deadline-desc">Deadline (Latest)</option>
-              <option value="added-desc">Recently Added</option>
-              <option value="alpha-asc">A → Z</option>
             </select>
           </div>
 
@@ -150,6 +148,28 @@
       <section id="listings" class="listings" aria-label="Opportunity listings">
         <p class="listings-loading">Loading opportunities…</p>
       </section>
+
+      <!-- ===== PAGINATION ===== -->
+      <nav class="pagination" id="pagination" aria-label="Pagination" hidden>
+        <div class="pagination-controls">
+          <button
+            class="pagination-btn"
+            id="pagination-prev"
+            aria-label="Previous page"
+          >
+            ← Prev
+          </button>
+          <div id="pagination-numbers"></div>
+          <button
+            class="pagination-btn"
+            id="pagination-next"
+            aria-label="Next page"
+          >
+            Next →
+          </button>
+        </div>
+        <span class="pagination-info" id="pagination-info"></span>
+      </nav>
 
       <!-- ===== EMPTY STATE ===== -->
       <section class="empty-state" id="empty-state" aria-live="polite" hidden>

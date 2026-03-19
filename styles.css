@@ -4,52 +4,54 @@
 
 /* ----- Custom Properties ----- */
 :root {
-  --color-primary:      #2563EB;
-  --color-primary-dark: #1D4ED8;
-  --color-accent:       #10B981;
-  --color-accent-dark:  #059669;
-  --color-surface:      #F8FAFC;
-  --color-card:         #FFFFFF;
-  --color-border:       #E2E8F0;
-  --color-text:         #0F172A;
-  --color-muted:        #64748B;
+  --color-primary: #2563eb;
+  --color-primary-dark: #1d4ed8;
+  --color-accent: #10b981;
+  --color-accent-dark: #059669;
+  --color-surface: #f8fafc;
+  --color-card: #ffffff;
+  --color-border: #e2e8f0;
+  --color-text: #0f172a;
+  --color-muted: #64748b;
 
-  --badge-int-bg:       #DBEAFE;
-  --badge-int-text:     #1D4ED8;
-  --badge-sch-bg:       #D1FAE5;
-  --badge-sch-text:     #065F46;
+  --badge-int-bg: #dbeafe;
+  --badge-int-text: #1d4ed8;
+  --badge-sch-bg: #d1fae5;
+  --badge-sch-text: #065f46;
 
-  --urgent-bg:          #FEF3C7;
-  --urgent-text:        #92400E;
+  --urgent-bg: #fef3c7;
+  --urgent-text: #92400e;
 
-  --space-1:  4px;
-  --space-2:  8px;
-  --space-3:  12px;
-  --space-4:  16px;
-  --space-6:  24px;
-  --space-8:  32px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
   --space-12: 48px;
   --space-16: 64px;
 
-  --text-sm:   0.875rem;
+  --text-sm: 0.875rem;
   --text-base: 1rem;
-  --text-lg:   1.125rem;
-  --text-xl:   1.25rem;
-  --text-2xl:  1.5rem;
-  --text-4xl:  2.5rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-4xl: 2.5rem;
 
   --radius-sm: 6px;
-  --radius:    12px;
+  --radius: 12px;
   --radius-lg: 16px;
 
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
-  --shadow:    0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
 
   --transition: 150ms ease;
 }
 
 /* ----- Reset & Base ----- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -60,7 +62,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
   font-size: var(--text-base);
   line-height: 1.6;
   color: var(--color-text);
@@ -81,7 +83,8 @@ ul {
   list-style: none;
 }
 
-img, svg {
+img,
+svg {
   display: block;
 }
 
@@ -110,7 +113,11 @@ img, svg {
   line-height: 1;
   cursor: pointer;
   border: 1.5px solid transparent;
-  transition: background-color var(--transition), border-color var(--transition), color var(--transition), box-shadow var(--transition);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    box-shadow var(--transition);
   text-decoration: none;
   white-space: nowrap;
 }
@@ -236,7 +243,9 @@ img, svg {
   border-radius: var(--radius-sm);
   font-weight: 500;
   color: var(--color-muted);
-  transition: color var(--transition), background-color var(--transition);
+  transition:
+    color var(--transition),
+    background-color var(--transition);
   text-decoration: none;
 }
 
@@ -268,7 +277,9 @@ img, svg {
   height: 2px;
   background-color: var(--color-text);
   border-radius: 2px;
-  transition: transform var(--transition), opacity var(--transition);
+  transition:
+    transform var(--transition),
+    opacity var(--transition);
 }
 
 /* ============================================================
@@ -381,7 +392,9 @@ img, svg {
   background-color: var(--color-card);
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-sm);
-  transition: border-color var(--transition), box-shadow var(--transition);
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
   outline: none;
   appearance: none;
 }
@@ -392,7 +405,7 @@ img, svg {
 
 .search-input:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 .search-clear {
@@ -447,7 +460,9 @@ img, svg {
   border-radius: var(--radius-sm);
   cursor: pointer;
   outline: none;
-  transition: border-color var(--transition), box-shadow var(--transition);
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%2364748B' d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -458,7 +473,7 @@ img, svg {
 
 .filter-select:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 /* Results meta */
@@ -495,7 +510,7 @@ img, svg {
 }
 
 .filter-pill:hover {
-  background-color: #BFDBFE;
+  background-color: #bfdbfe;
 }
 
 /* ============================================================
@@ -522,7 +537,9 @@ img, svg {
   display: flex;
   flex-direction: column;
   gap: 0;
-  transition: box-shadow var(--transition), transform var(--transition);
+  transition:
+    box-shadow var(--transition),
+    transform var(--transition);
   overflow: hidden;
 }
 
@@ -663,7 +680,9 @@ img, svg {
   border-radius: var(--radius-sm);
   font-weight: 500;
   color: var(--color-text);
-  transition: border-color var(--transition), background-color var(--transition);
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
   text-decoration: none;
 }
 
@@ -799,14 +818,16 @@ img, svg {
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-sm);
   outline: none;
-  transition: border-color var(--transition), box-shadow var(--transition);
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
   width: 100%;
 }
 
 .form-input:focus,
 .form-textarea:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 .form-textarea {
@@ -822,6 +843,91 @@ img, svg {
   border-radius: var(--radius-sm);
   color: var(--badge-sch-text);
   font-weight: 600;
+}
+
+/* ============================================================
+   HIDDEN & VISIBILITY
+   ============================================================ */
+[hidden],
+.card[hidden] {
+  display: none !important;
+}
+
+/* ============================================================
+   PAGINATION
+   ============================================================ */
+.pagination {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: var(--space-6) var(--space-6) var(--space-12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.pagination-btn {
+  min-width: 40px;
+  height: 40px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-card);
+  color: var(--color-text);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.pagination-btn:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background-color: var(--color-surface);
+}
+
+.pagination-btn.active {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-input {
+  min-width: 40px;
+  height: 40px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-card);
+  color: var(--color-text);
+  font-weight: 500;
+  font-size: var(--text-base);
+  font-family: "Inter", system-ui, sans-serif;
+  transition: all var(--transition);
+}
+
+.pagination-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  border-color: var(--color-primary);
+}
+
+.pagination-info {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
 }
 
 /* ============================================================
