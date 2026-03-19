@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scrapertunities — Find Internships & Scholarships</title>
+    <title>Scrapertunities — Find Internships</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -38,8 +38,8 @@
             Find Your Next <span class="text-accent">Opportunity</span>
           </h1>
           <p class="hero-subtitle">
-            Scrapertunities automatically pulls the latest internship and
-            scholarship listings so you never miss a deadline.
+            Scrapertunities automatically pulls the latest internship listings
+            so you never miss a deadline.
           </p>
           <a href="#listings" class="btn btn-primary btn-lg"
             >Browse Opportunities</a
@@ -53,10 +53,6 @@
           <div class="stat">
             <span class="stat-number" id="stat-internships">0</span>
             <span class="stat-label">Internships</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number" id="stat-scholarships">0</span>
-            <span class="stat-label">Scholarships</span>
           </div>
         </div>
       </section>
@@ -96,15 +92,6 @@
         </div>
 
         <div class="filter-row">
-          <div class="filter-group">
-            <label class="filter-label" for="filter-type">Type</label>
-            <select id="filter-type" class="filter-select">
-              <option value="all">All Types</option>
-              <option value="internship">Internship</option>
-              <option value="scholarship">Scholarship</option>
-            </select>
-          </div>
-
           <div class="filter-group">
             <label class="filter-label" for="filter-location">Location</label>
             <select id="filter-location" class="filter-select">
@@ -202,59 +189,36 @@
       <!-- ===== RESOURCES ===== -->
       <section class="resources">
         <h2>Helpful Resources</h2>
+        <p class="resources-subtitle">Tools to help you land the role</p>
         <ul class="resource-list">
           <li>
-            <a href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"
-                />
-                <path
-                  d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"
-                />
-              </svg>
-              How to Write a Strong Internship Application
+            <a href="https://www.techinterviewhandbook.org" target="_blank" rel="noopener noreferrer" class="resource-card">
+              <span class="resource-icon" aria-hidden="true">📘</span>
+              <div class="resource-body">
+                <span class="resource-title">Tech Interview Handbook</span>
+                <span class="resource-desc">Algorithms, system design, and behavioral prep — all free.</span>
+              </div>
+              <span class="resource-arrow" aria-hidden="true">→</span>
             </a>
           </li>
           <li>
-            <a href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"
-                />
-                <path
-                  d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"
-                />
-              </svg>
-              Scholarship Essay Tips & Common Mistakes
+            <a href="https://joinhandshake.com/students/" target="_blank" rel="noopener noreferrer" class="resource-card">
+              <span class="resource-icon" aria-hidden="true">🤝</span>
+              <div class="resource-body">
+                <span class="resource-title">Handshake</span>
+                <span class="resource-desc">Find internships posted directly by campus recruiters.</span>
+              </div>
+              <span class="resource-arrow" aria-hidden="true">→</span>
             </a>
           </li>
           <li>
-            <a href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"
-                />
-                <path
-                  d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"
-                />
-              </svg>
-              Resume Builder for Students
+            <a href="https://www.glassdoor.com/Students/index.htm" target="_blank" rel="noopener noreferrer" class="resource-card">
+              <span class="resource-icon" aria-hidden="true">🔍</span>
+              <div class="resource-body">
+                <span class="resource-title">Glassdoor for Students</span>
+                <span class="resource-desc">Research company culture, salaries, and interview questions.</span>
+              </div>
+              <span class="resource-arrow" aria-hidden="true">→</span>
             </a>
           </li>
         </ul>
