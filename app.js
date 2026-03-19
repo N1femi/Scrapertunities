@@ -179,11 +179,60 @@ document.addEventListener("DOMContentLoaded", () => {
       const btn = document.createElement("button")
       btn.className = `pagination-btn ${i === currentPage ? "active" : ""}`
       btn.textContent = i
-      btn.addEventListener("click", () => {
-        currentPage = i
-        updatePagination()
-        window.scrollTo({ top: listings.offsetTop - 100, behavior: "smooth" })
-      })
+
+      // If this is the current page, make it clickable to edit
+      if (i === currentPage) {
+        btn.addEventListener("click", () => {
+          // Replace button with input field
+          const input = document.createElement("input")
+          input.type = "text"
+          input.className = "pagination-input"
+          input.value = currentPage
+          input.style.width = "40px"
+          input.style.height = "40px"
+          input.style.textAlign = "center"
+
+          btn.replaceWith(input)
+          input.focus()
+          input.select()
+
+          const handleSubmit = () => {
+            const pageNum = parseInt(input.value, 10)
+            // Validate input
+            if (!isNaN(pageNum) && pageNum >= 1 && pageNum <= totalPages) {
+              currentPage = pageNum
+              updatePagination()
+              window.scrollTo({
+                top: listings.offsetTop - 100,
+                behavior: "smooth",
+              })
+            } else {
+              // Invalid input, restore button
+              input.replaceWith(btn)
+            }
+          }
+
+          input.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+              handleSubmit()
+            }
+          })
+
+          input.addEventListener("blur", () => {
+            // Restore button on blur if input still exists
+            if (input.parentNode) {
+              input.replaceWith(btn)
+            }
+          })
+        })
+      } else {
+        btn.addEventListener("click", () => {
+          currentPage = i
+          updatePagination()
+          window.scrollTo({ top: listings.offsetTop - 100, behavior: "smooth" })
+        })
+      }
+
       paginationNumbers.appendChild(btn)
     }
 
