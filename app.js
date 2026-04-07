@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ── Element references ──────────────────────────────────────
   const searchInput = document.getElementById("search-input")
   const searchClear = document.getElementById("search-clear")
+  const typeSelect = document.getElementById("filter-type")
   const locSelect = document.getElementById("filter-location")
   const deadlineSelect = document.getElementById("filter-deadline")
   const sortSelect = document.getElementById("sort-by")
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const statTotal = document.getElementById("stat-total")
   const statInternships = document.getElementById("stat-internships")
+  const statScholarships = document.getElementById("stat-scholarships")
 
   const navToggle = document.querySelector(".nav-toggle")
   const navLinks = document.querySelector(".nav-links")
@@ -71,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     card.innerHTML = `
       <div class="card-header">
-        <span class="badge badge-internship">Internship</span>
+        <span class="badge ${listing.type === "scholarship" ? "badge-scholarship" : "badge-internship"}">${listing.type === "scholarship" ? "Scholarship" : "Internship"}</span>
         <span class="card-deadline">Due ${deadlineDisplay}</span>
       </div>
       <div class="card-body">
@@ -122,9 +124,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const internships = visibleCards.filter(
       (c) => c.dataset.type === "internship",
     )
+    const scholarships = visibleCards.filter(
+      (c) => c.dataset.type === "scholarship",
+    )
 
     statTotal.textContent = visibleCards.length
     statInternships.textContent = internships.length
+    statScholarships.textContent = scholarships.length
   }
 
   // ── Results count ────────────────────────────────────────────
@@ -256,6 +262,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ── Active filter pills ──────────────────────────────────────
   const FILTER_LABELS = {
+    type: {
+      id: "filter-type",
+      label: (val) =>
+        val === "all"
+          ? null
+          : val === "internship"
+            ? "Internship"
+            : "Scholarship",
+    },
     location: {
       id: "filter-location",
       label: (val) =>
@@ -292,6 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ── Core filter function ─────────────────────────────────────
   function applyFilters() {
     const q = searchInput.value.trim().toLowerCase()
+    const type = typeSelect.value
     const loc = locSelect.value
     const daysRaw = deadlineSelect.value
     const maxDays = daysRaw === "all" ? Infinity : parseInt(daysRaw)
@@ -304,10 +320,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const daysLeft = (deadline - today) / (1000 * 60 * 60 * 24)
 
       const matchSearch = !q || title.includes(q)
+      const matchType = type === "all" || card.dataset.type === type
       const matchLoc = loc === "all" || card.dataset.location === loc
       const matchDeadline = daysLeft <= maxDays
 
-      card.hidden = !(matchSearch && matchLoc && matchDeadline)
+      card.hidden = !(matchSearch && matchType && matchLoc && matchDeadline)
     })
 
     // Reset to page 1 when filters change
@@ -342,6 +359,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ── Reset ────────────────────────────────────────────────────
   function resetFilters() {
     searchInput.value = ""
+    typeSelect.value = "all"
     locSelect.value = "all"
     deadlineSelect.value = "all"
     sortSelect.value = "deadline-asc"
@@ -362,6 +380,7 @@ document.addEventListener("DOMContentLoaded", () => {
     applyFilters()
   })
 
+  typeSelect.addEventListener("change", applyFilters)
   locSelect.addEventListener("change", applyFilters)
   deadlineSelect.addEventListener("change", applyFilters)
   sortSelect.addEventListener("change", applyFilters)
